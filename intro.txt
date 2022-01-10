@@ -1,2 +1,5 @@
-Hello my name is Diego 
+Hello my name is Diego Gonzalez
 This was kind of hard
+
+## Background
+I was born in Longmont, CO
