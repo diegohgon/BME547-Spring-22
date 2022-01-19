@@ -9,7 +9,7 @@ def interface():
         print("2-LDL")
         print("3-Cholesterol")
         print("9-Quit")
-        choice = input("Enter your choice: ")
+        choice = input("Enter your choice: {}".format(choice))
         if choice == "9":
             keep_running = False
         elif choice == "1":
