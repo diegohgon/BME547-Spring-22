@@ -1,4 +1,6 @@
-def interface ():
+print("This is the blood calculator module and python calls it ()".format(__name__))
+
+def interface():
     print("Blood Tet Analysis")
     keep_running = True
     while keep_running:
@@ -23,7 +25,7 @@ def accept_input(test_name):
     entry = input("Enter the {} test result: ".format(test_name))
     return int(entry)
 
-def print_results(test_name, test_value, test_class):
+def print_result(test_name, test_value, test_class):
     out_string = "The test value of {} for {} is {}".format(test_value, test_name, test_class)
     print(out_string)
     return
@@ -42,6 +44,7 @@ def HDL_driver():
     HDL_value = accept_input("HDL")
     classification = check_HDL(HDL_value)
     print_result("HDL", HDL_value, classification)
+    return
     
 def check_LDL(LDL_value):
     if LDL_value >= 190:
@@ -72,9 +75,8 @@ def Chol_driver():
     Chol_value = accept_input("Cholesterol")
     classification = check_Chol(Chol_value)
     print_result("Cholesterol", Chol_value, classification)
-    
 
 
 
-
-interface()
+if __name__ == "__main__" :
+    interface()
