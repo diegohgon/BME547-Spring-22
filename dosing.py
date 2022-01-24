@@ -6,7 +6,7 @@
 """
 
 
-def dose_amount():
+def dose_prompts():
     print("Day One Dosing Guidelines")
     print("")
     print("Choose diagnosis:")
@@ -14,26 +14,40 @@ def dose_amount():
     print("2 - Acute bacterial sinusitis")
     print("3 - Community-acquired pneumonia")
     print("4 - Pharyngitis/tonsilitis")
+    return
+
+
+def patient_input():
     diagnosis = int(input("Enter a number: "))
     print("PATIENT WEIGHT")
     print("Enter patient weight followed by units of kg or lb.")
     print("Examples:  65.3 lb      21.0 kg")
     weight_input = input("Enter weight: ")
+
+    # he split it here
     weight_data = weight_input.split(" ")
     weight = float(weight_data[0])
     units = weight_data[1]
     if units == "lb":
         weight = weight / 2.205
+    return diagnosis, weight
+
+def dose_calculation(diagnosis, weight):
     dosages_mg_per_kg = [30, 10, 10, 12]
     dosage_mg_per_kg = dosages_mg_per_kg[diagnosis-1]
     dosage_mg_first_day = weight * dosage_mg_per_kg
+
+    # he split it here
     print("CORRECT DOSAGE")
     print("For a patient weighing {:.1f} kg,".format(weight))
     print("  the correct dosage is {:.1f} mg the first day"
           .format(dosage_mg_first_day))
 
+# have input and output in different functions and then have all the algorithmic components in different functions
 
 if __name__ == '__main__':
-    dose_amount()
+    dose_prompts()
+    weight = dose_calculation(weight, diagnosis)
+    
 
 
