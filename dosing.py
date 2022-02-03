@@ -32,6 +32,7 @@ def patient_input():
         weight = weight / 2.205
     return diagnosis, weight
 
+
 def dose_calculation(diagnosis, weight):
     dosages_mg_per_kg = [30, 10, 10, 12]
     dosage_mg_per_kg = dosages_mg_per_kg[diagnosis-1]
@@ -43,11 +44,10 @@ def dose_calculation(diagnosis, weight):
     print("  the correct dosage is {:.1f} mg the first day"
           .format(dosage_mg_first_day))
 
-# have input and output in different functions and then have all the algorithmic components in different functions
+# have input and output in different functions and then have all the
+# algorithmic components in different functions
+
 
 if __name__ == '__main__':
     dose_prompts()
-    weight = dose_calculation(weight, diagnosis)
-    
-
-
+    # weight = dose_calculation(weight, diagnosis)

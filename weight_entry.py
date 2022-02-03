@@ -23,6 +23,5 @@ def convert_lb_to_kg(weight_lb):
     return weight_kg
 
 
-
 if __name__ == "__main__":
     input_weight_entry()
