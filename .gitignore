@@ -1,3 +1,4 @@
-	blood_calc2
-	blood_calculator.pyc
-
+.DS_Store
+__pycache__/
+est/
+venv/
