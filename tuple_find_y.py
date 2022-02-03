@@ -23,8 +23,10 @@ def interface():
         elif choice == "5":
             input_x3 = x3_driver()
         elif choice == "6":
-            expected_y3 = check_y_value(input_x1, input_x2, input_x3, input_y1, input_y2)
+            expected_y3 = check_y_value(
+                input_x1, input_x2, input_x3, input_y1, input_y2)
     return
+
 
 def accept_input(test_name):
     entry = input("Enter the {} value: ".format(test_name))
@@ -35,17 +37,21 @@ def x1_driver():
     input_x1 = accept_input("x1")
     return input_x1
 
+
 def x2_driver():
     input_x2 = accept_input("x2")
     return input_x2
+
 
 def x3_driver():
     input_x3 = accept_input("x3")
     return input_x3
 
+
 def y1_driver():
     input_y1 = accept_input("y1")
     return input_y1
+
 
 def y2_driver():
     input_y2 = accept_input("y2")
@@ -59,6 +65,7 @@ def check_y_value(input_x1, input_x2, input_x3, input_y1, input_y2):
     expected_y3 = input_x3 * m + y_intercept
     print("The expected y3 value is {}.".format(expected_y3))
     return expected_y3
+
 
 if __name__ == "__main__":
     interface()

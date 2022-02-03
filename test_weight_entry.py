@@ -18,4 +18,5 @@ def test_parse_weight_input(input, expected):
     answer = parse_weight_input(input)
     assert answer == expected
 
-# can use pytest.approx(expected) when dealing with decimals to help computers with the error they have
+# can use pytest.approx(expected) when dealing with decimals to help
+# computers with the error they have
