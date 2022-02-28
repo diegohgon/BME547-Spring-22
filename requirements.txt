@@ -4,4 +4,7 @@ pep8
 pyyaml
 future
 pylint
+requests
+coverage
+flask
 
