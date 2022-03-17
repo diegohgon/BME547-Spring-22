@@ -1,11 +1,20 @@
 import logging
 from flask import Flask, request, jsonify
+from pymodm import connect
+from pymodm import MongoModel, fields
 
 # Define variable to contain Flask class for server
 app = Flask(__name__)
 
 # Create list for database to contain patient data
 db = []
+
+
+class Patient(MongoModel):
+    name = fields.CharField()
+    patient_id = fields.IntegerField(primary_key=True)
+    blood_type = fields.CharField()
+    tests = fields.CharField()
 
 
 def init_server():
@@ -21,10 +30,13 @@ def init_server():
     Note:  As currently written, this function does not need a unit test as
     it does not do any data manipulation itself.
     """
+    connect("mongodb+srv://dg280:05DhG33#@bme547.txmhz.mongodb."
+            "net/health_db?retryWrites=true&w=majority")
     add_patient_to_db("Ann Ables", 101, "A+")
     add_patient_to_db("Bob Boyles", 202, "B-")
     logging.basicConfig(filename="health_db_server.log", level=logging.DEBUG,
                         filemode='w')
+    print("initialize server")
 
 
 @app.route("/new_patient", methods=["POST"])
@@ -157,9 +169,18 @@ def add_patient_to_db(patient_name, id_no, blood_type):
             database
     """
 
+    # You need to update this with what he wrote in class!!!!
+
     new_patient = {"name": patient_name, "id": id_no,
                    "blood_type": blood_type, "tests": {}}
     db.append(new_patient)
+    """
+    u2 = User(email="mark@test.com", name="Mark Palmeri", id_no="2000")
+    u2.save()
+    u3 = User(email="bob@test.com", first_name="Bob",
+    last_name="Smith", age="2000")
+    u3.save()
+    """
     return True
 
 
@@ -246,9 +267,9 @@ def get_patient_tests_from_database(patient_id):
         found, otherwise an error string; status code
 
     """
-    for patient in db:
-        if patient["id"] == int(patient_id):
-            return patient["tests"], 200
+    for patient in Patient.objects.raw({}):
+        if patient.patient_id == int(patient_id):
+            return patient.tests, 200
     return "Patient_id {} was not found".format(patient_id), 400
 
 
